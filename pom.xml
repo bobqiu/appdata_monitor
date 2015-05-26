@@ -122,7 +122,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>service.Main</mainClass>
+                    <!--mainClass>service.Main</mainClass-->
+                    <mainClass>datasource.SendMessage</mainClass>
                 </configuration>
             </plugin>
         </plugins>

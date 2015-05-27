@@ -68,7 +68,7 @@ public class SendMessage {
     }
     public static void sendMessage(){
         String input_path = "/data/" + package_name + "/" + file_name + ".txt";
-        String output_path = "/home/cly/data/" + package_name + "_" + file_name;
+        String output_path = "/home/cly/appdata/" + package_name + "_" + file_name;
         BufferedReader br = new BufferedReader(new InputStreamReader(SendMessage.class.getResourceAsStream(input_path)));
         BufferedWriter bw = null;
         String words;

@@ -3,6 +3,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.*;
+import java.sql.Time;
 
 /**
  * Created by CLY on 2015/5/27.
@@ -35,6 +36,12 @@ public class Main {
         }
         s.scheduleFile(temp);
         s.start();
+
+        try {
+            Thread.currentThread().sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         File file = new File("/var/log/appdata_monitor/data");
         String str = null;

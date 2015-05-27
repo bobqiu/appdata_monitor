@@ -36,9 +36,9 @@ public class SendMessage {
             str = package_name + " " + file_name;
             wtiteFileName(str);
         }
-        System.out.println(String.format("[开始]读取%s日%s时的数据，开始发送", package_name, file_name));
+        logger.info(String.format("[开始]读取%s日%s时的数据，开始发送", package_name, file_name));
         sendMessage();
-        System.out.println(String.format("[结束]读取%s日%s时的数据，发送完成", package_name, file_name));
+        logger.info(String.format("[结束]读取%s日%s时的数据，发送完成", package_name, file_name));
         wtiteFileName(createNewFilename());
     }
     public static String readFileName(){
@@ -52,7 +52,7 @@ public class SendMessage {
                 return str;
             }
         } catch (IOException e) {
-            System.out.println("读取数据文件名称异常");
+           logger.error("读取数据文件名称异常", e);
         }
         return null;
     }
@@ -63,21 +63,27 @@ public class SendMessage {
             writer.write(str);
             writer.close();
         } catch (IOException e) {
-            System.out.println("写入数据文件名称异常");
+            logger.error("写入数据文件名称异常",e);
         }
     }
     public static void sendMessage(){
-        String path = "/data/" + package_name + "/" + file_name + ".txt";
-        BufferedReader br = new BufferedReader(new InputStreamReader(SendMessage.class.getResourceAsStream(path)));
+        String input_path = "/data/" + package_name + "/" + file_name + ".txt";
+        String output_path = "/home/cly/data/" + package_name + "_" + file_name;
+        BufferedReader br = new BufferedReader(new InputStreamReader(SendMessage.class.getResourceAsStream(input_path)));
+        BufferedWriter bw = null;
         String words;
         try {
+            bw = new BufferedWriter(new FileWriter(output_path));
             while((words=br.readLine())!=null){
-               logger.info(words);
+                bw.write(words);
+                bw.newLine();
+                bw.flush();
             }
+            bw.close();
+            br.close();
         } catch (IOException e) {
-            System.out.println("向指定端口发送数据异常");
+            logger.error("向指定端口发送数据异常", e);
         }
-
     }
     public static String createNewFilename() throws ParseException {
         String str = null;

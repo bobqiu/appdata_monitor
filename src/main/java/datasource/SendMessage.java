@@ -69,10 +69,11 @@ public class SendMessage {
     public static void sendMessage(){
         String input_path = "/data/" + package_name + "/" + file_name + ".txt";
         String output_path = "/home/cly/appdata/" + package_name + "_" + file_name;
-        BufferedReader br = new BufferedReader(new InputStreamReader(SendMessage.class.getResourceAsStream(input_path)));
+        BufferedReader br = null;
         BufferedWriter bw = null;
         String words;
         try {
+            br = new BufferedReader(new InputStreamReader(SendMessage.class.getResourceAsStream(input_path)));
             bw = new BufferedWriter(new FileWriter(output_path));
             while((words=br.readLine())!=null){
                 bw.write(words);
@@ -81,8 +82,8 @@ public class SendMessage {
             }
             bw.close();
             br.close();
-        } catch (IOException e) {
-            logger.error("向指定端口发送数据异常", e);
+        } catch (Exception e) {
+            logger.error("读取数据异常", e);
         }
     }
     public static String createNewFilename() throws ParseException {

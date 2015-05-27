@@ -147,7 +147,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>service.Main</mainClass>
+                    <mainClass>Main</mainClass>
                     <!--mainClass>datasource.SendMessage</mainClass-->
                 </configuration>
             </plugin>

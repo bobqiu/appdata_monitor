@@ -36,26 +36,5 @@ public class Main {
         }
         s.scheduleFile(temp);
         s.start();
-
-        try {
-            Thread.currentThread().sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        File file = new File("/var/log/appdata_monitor/data");
-        String str = null;
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            str = reader.readLine();
-            if (str == "20130313 2"){
-                s.stop();
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

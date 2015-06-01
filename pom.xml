@@ -97,8 +97,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!--mainClass>Main</mainClass-->
-                    <mainClass>datasource.SendMessage</mainClass>
+                    <mainClass>Main</mainClass>
+                    <!--mainClass>datasource.SendMessage</mainClass-->
                 </configuration>
             </plugin>
         </plugins>

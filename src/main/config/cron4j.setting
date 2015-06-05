@@ -1,1 +1,2 @@
 * */1 * * * java:datasource.SendMessage
+*/10 * * * * java:websource.hbase.HBaseDao

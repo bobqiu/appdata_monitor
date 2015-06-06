@@ -20,7 +20,7 @@ import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.util.Bytes;
 
 
-public class HBaseDao extends Thread{
+public class HBaseDao{
 	public static Configuration config;
 	public static HTable table;
 	public static final String HOUR_PATH = "/home/cly/package/tomcat/webapps/show_chart/hours.tsv";

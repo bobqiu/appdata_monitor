@@ -23,9 +23,9 @@ import org.apache.hadoop.hbase.util.Bytes;
 public class HBaseDao extends Thread{
 	public static Configuration config;
 	public static HTable table;
-	public static final String HOUR_PATH = "/home/cly/package/tomcat/webapps/show_chart/hours";
-	public static final String DAY_TOTAL_PATH = "/home/cly/package/tomcat/webapps/show_chart/total";
-	public static final String DAY_EMPTY_PATH = "/home/cly/package/tomcat/webapps/show_chart/empty";
+	public static final String HOUR_PATH = "/home/cly/package/tomcat/webapps/show_chart/hours.tsv";
+	public static final String DAY_TOTAL_PATH = "/home/cly/package/tomcat/webapps/show_chart/total.tsv";
+	public static final String DAY_EMPTY_PATH = "/home/cly/package/tomcat/webapps/show_chart/empty.tsv";
 	public HBaseDao(){
 		config = HBaseConfiguration.create();
 		try {

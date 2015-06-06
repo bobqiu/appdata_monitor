@@ -109,7 +109,7 @@ public class HBaseDao{
 		// print days total
 		try {
 			bw = new BufferedWriter(new FileWriter(DAY_TOTAL_PATH));
-			bw.write("date1" + "\t" + "total1" + "\t" + "date2" + "total2");
+			bw.write("date1" + "\t" + "total1" + "\t" + "date2" + "\t" + "total2");
 			for (int i = 0; i < 7; i++) {
 				bw.newLine();
 				bw.write(days[i] + "\t" + total[i] + "\t" + days[i+7] + "\t" + total[i+7]);
@@ -122,7 +122,7 @@ public class HBaseDao{
 		// print days empty
 		try {
 			bw = new BufferedWriter(new FileWriter(DAY_EMPTY_PATH));
-			bw.write("date1" + "\t" + "empty1" + "\t" + "date2" + "empty2");
+			bw.write("date1" + "\t" + "empty1" + "\t" + "date2" + "\t" + "empty2");
 			for (int i = 0; i < 7; i++) {
 				bw.newLine();
 				bw.write(days[i] + "\t" + empty[i] + "\t" + days[i+7] + "\t" + empty[i+7]);

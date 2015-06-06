@@ -102,8 +102,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>Main</mainClass>
+                    <!--mainClass>Main</mainClass-->
                     <!--mainClass>datasource.SendMessage</mainClass-->
+                    <mainClass>websource.hbase.HBaseDao</mainClass>
                 </configuration>
             </plugin>
         </plugins>

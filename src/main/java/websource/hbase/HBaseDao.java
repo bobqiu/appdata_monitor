@@ -39,9 +39,8 @@ public class HBaseDao{
 		List<AppData> list = new ArrayList<AppData>();
 		
 		Scan scan=new Scan();
-		scan.setBatch(0);
-		scan.setCaching(10000);
-		scan.setMaxVersions();
+		scan.setCaching(500);
+		scan.setCacheBlocks(true);
 		scan.setStartRow(Bytes.toBytes("2013031300"));
 		scan.setStopRow(Bytes.toBytes("2013032623"));
 		

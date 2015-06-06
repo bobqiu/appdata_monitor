@@ -2,10 +2,10 @@ package websource.model;
 
 public class AppData {
 	public String date;
-	public int total;
-	public int empty;
+	public long total;
+	public long empty;
 	
-	public AppData(String date, int total, int empty){
+	public AppData(String date, long total, long empty){
 		this.date = date;
 		this.total = total;
 		this.empty = empty;

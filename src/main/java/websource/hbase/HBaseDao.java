@@ -53,9 +53,18 @@ public class HBaseDao{
 		}
 		for(Result rs : scanner){
 			// hours
+			long total = 0L;
+			long empty = 0L;
 			String dayHour = Bytes.toString(rs.getRow());
-			int total = Bytes.toInt(rs.getValue(Bytes.toBytes("cf"),Bytes.toBytes("total")));
-			int empty = Bytes.toInt(rs.getValue(Bytes.toBytes("cf"),Bytes.toBytes("empty")));
+			if (!rs.isEmpty()) {
+				Map<byte[], byte[]> factors = rs.getFamilyMap(Bytes.toBytes("cf"));
+				total = Bytes.toLong(factors.get("total".getBytes()));
+				empty = Bytes.toLong(factors.get("empty".getBytes()));
+			}
+			//int total = Bytes.toInt(rs.getValue(Bytes.toBytes("cf"),Bytes.toBytes("total")));
+			System.out.println(total);
+			//int empty = Bytes.toInt(rs.getValue(Bytes.toBytes("cf"),Bytes.toBytes("empty")));
+			System.out.println(empty);
 			list.add(new AppData(dayHour, total, empty));
 			
 			// days
@@ -86,15 +95,15 @@ public class HBaseDao{
 		// init
 		String [] days = {"20130313","20130314","20130315","20130316","20130317","20130318","20130319",
 				"20130320","20130321","20130322","20130323","20130324","20130325","20130326"};
-		int [] total = new int[14];
-		int [] empty = new int[14];
+		long [] total = new long[14];
+		long [] empty = new long[14];
 		int num = 0;
 
-		String [] key_arr = (String[]) map.keySet().toArray();
+		Object [] key_arr =  map.keySet().toArray();
 		Arrays.sort(key_arr);
-		for(String key:key_arr){
-			total[num] = map.get(key).total;
-			empty[num] = map.get(key).empty;
+		for(Object key:key_arr){
+			total[num] = map.get(String.valueOf(key)).total;
+			empty[num] = map.get(String.valueOf(key)).empty;
 			num ++;
 		}
 

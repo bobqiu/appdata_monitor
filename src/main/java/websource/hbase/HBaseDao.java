@@ -26,7 +26,7 @@ public class HBaseDao{
 	public static final String HOUR_PATH = "/home/cly/package/tomcat/webapps/show_chart/hours.tsv";
 	public static final String DAY_TOTAL_PATH = "/home/cly/package/tomcat/webapps/show_chart/total.tsv";
 	public static final String DAY_EMPTY_PATH = "/home/cly/package/tomcat/webapps/show_chart/empty.tsv";
-	public HBaseDao(){
+	static {
 		config = HBaseConfiguration.create();
 		try {
 			table = new HTable(config, Bytes.toBytes("appdata_monitor"));
@@ -34,7 +34,8 @@ public class HBaseDao{
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {
+	public static void main(String [] args) {
+
 		Map<String,AppData> map = new HashMap<String,AppData>();
 		List<AppData> list = new ArrayList<AppData>();
 		
